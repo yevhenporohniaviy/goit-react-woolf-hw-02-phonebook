@@ -22,9 +22,8 @@ export class App extends Component {
       return;
     }
 
-    const id = nanoid();
     this.setState({
-      contacts: [...this.state.contacts, { ...data, id }],
+      contacts: [...this.state.contacts, { ...data, id: nanoid() }],
     });
   };
   handleTypeFilter = value => {
@@ -34,14 +33,14 @@ export class App extends Component {
   };
   handleRemoveContact = id => {
     this.setState({
-      contacts: this.state.contacts.filter(c => c.id !== id),
+      contacts: this.state.contacts.filter(contact => contact.id !== id),
     });
   };
 
   render() {
     const { filter, contacts } = this.state;
-    const filterList = contacts.filter(c =>
-      c.name.toLowerCase().includes(filter.toLowerCase())
+    const filterList = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
     );
 
     return (

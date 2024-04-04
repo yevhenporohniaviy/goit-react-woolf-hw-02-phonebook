@@ -3,8 +3,12 @@ import ContactListItem from "./ContactListItem";
 const ContactList = ({ contacts, onRemoveContact }) => {
   return (
     <ul>
-      {contacts.map(c => (
-        <ContactListItem key={c.id} {...c} onRemoveContact={onRemoveContact} />
+      {contacts.map(contact => (
+        <ContactListItem
+          key={contact.id}
+          {...contact}
+          onRemoveContact={onRemoveContact}
+        />
       ))}
     </ul>
   );
